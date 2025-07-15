@@ -1,0 +1,140 @@
+header {
+    display: flex;
+    background-color: #ffb6c1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 10px;
+    box-sizing: border-box; /* include the padding size and the width */
+    width: 100%;
+    flex-wrap: nowrap; /* All Items fit in one line, no wrapping */
+
+}
+
+header .shop-now a{
+    /* background-color: aqua; */
+    text-decoration: none;
+    color: rgb(139, 94, 131);
+    font-weight: 600;
+    /* font-size: 20px; */
+}
+
+header .shopNow a:hover{
+    text-decoration: underline;
+}
+
+
+header .logo {
+    /* background-color: blue; */
+    font-size: 45px;
+    font-family: 'Playfair Display', 'serif';
+    margin-left: 9vw;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: black;
+}
+
+
+header .others {
+    /* background-color: red; */
+    display: flex;
+    /* align-items: center; */
+    text-align: center;
+    margin-left: 5vw;
+    visibility: visible;
+}
+
+
+header .others nav {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+header .others nav a{
+    color: black;
+    margin-left: -2vw;
+    transition: color 0.3 ease;
+}
+
+
+header .others nav a:hover{
+    color: rgb(139, 94, 131);
+}
+
+
+header .others nav form {
+    display: flex;
+    align-items: center;
+    position: relative
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.nav-bar {
+    gap: 30px;
+}
+
+.nav-bar a{
+    color: black;
+}
+
+.nav-bar a:hover{
+    color: rgb(139, 94, 131);
+}
+
+.search-input {
+    width: 0; /* start with a collapsed width */
+    opacity: 0;
+    border: none;
+    border-radius: 12px;
+    padding: 5px;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition-delay: 0.2s;
+    position: absolute;
+    right: 30px;
+}
+
+.expanded .search-input {
+    width: 250px; /* Adjust width as needed */
+    opacity: 1;
+}
+
+.search-container #searchIcon {
+    cursor: pointer;
+}
+
+
+@media (max-width: 1200px) {
+    .shop-now a {
+        font-size: 16px;
+    }
+
+    header .logo {
+        font-size: 40px;
+    }
+
+    .nav-bar {
+        gap: 10px
+    }
+}
+
+/* @media (max-width: 746px) {
+    .shop-now a {
+        font-size: 5px;
+    }
+} */
+
+
+

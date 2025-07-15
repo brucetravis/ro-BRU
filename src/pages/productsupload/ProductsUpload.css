@@ -1,0 +1,45 @@
+.upload-section {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    gap: 20vw;
+}
+
+.upload-form {
+    text-align: center;
+    background-color: #ffb6c1;
+    padding: 16px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;;
+}
+
+
+.upload-form .btn {
+    padding: 8px 16px;
+    background-color: rgb(36, 36, 189);
+    transition: background-color 0.5s ease-in-out;
+}
+
+.upload-form .btn:hover {
+    cursor: pointer;
+    background-color: rgb(28, 28, 117);
+}
+
+.upload-page-motto {
+    font-family: "Calligraffitti", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+}
+
+@media (max-width: 1280px) {
+    .upload-section {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .upload-section {
+        flex-direction: column;
+    }
+}
+

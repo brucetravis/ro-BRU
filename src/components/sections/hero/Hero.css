@@ -1,0 +1,43 @@
+.video-section{
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden; /* Hide any parts that do not fit in the tag */
+}
+
+
+.background-video {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    min-width: 100vw;
+    min-height: 645px;
+    object-fit: cover;
+    z-index: 1 /*  Place the video behind the button and inform the section  */
+}
+
+.video-section .button {
+    position: absolute;
+    top: 80%;
+    left: 51.5%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 3px solid black;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    z-index: 2; /* Stay on top of the video */
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.5s;
+}
+
+.video-section .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+

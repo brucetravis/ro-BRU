@@ -1,0 +1,11 @@
+.sellers-form .form {
+    background-color: #ffb6c1;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.sellers-form .form:hover {
+    cursor: pointer;
+    transform: translate(10px);
+}
+

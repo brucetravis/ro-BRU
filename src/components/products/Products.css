@@ -1,0 +1,10 @@
+.products-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    flex: 1;
+    overflow: auto;
+    height: 100vh;
+    margin-left: 0;
+}

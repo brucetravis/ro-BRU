@@ -1,0 +1,30 @@
+.registration-card {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.registration-card .registration-form {
+    background-color: hsla(0, 2%, 59%, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.registration-card .registration-form .input-div input {
+    width: 300px
+}
+
+
+.registration-card .registration-form .btn {
+    background-color: hsl(351, 76%, 87%);
+}
+
+.registration-card .registration-form .btn:hover {
+    background-color: hsl(351, 76%, 87%, 0.85);
+}
+
+.registration-card .change {
+    color: blue;
+    cursor: pointer;
+}

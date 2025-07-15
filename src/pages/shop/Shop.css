@@ -1,0 +1,17 @@
+.shop-page {
+    position: relative;
+    /* padding-top: 10vh; */
+}
+
+.shop-products {
+    /* overflow: auto; */
+    /* margin-left: 2vw;
+    margin-top: 5vh;
+    min-height: 100vh; */
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+
+

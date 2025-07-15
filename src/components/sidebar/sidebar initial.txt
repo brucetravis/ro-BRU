@@ -1,0 +1,294 @@
+import React, { useCallback, useEffect, useState } from 'react'
+import './Sidebar.css'
+import { collection, getDocs, getFirestore, query } from 'firebase/firestore'
+
+export default function Sidebar({ filters, setFilters }) {
+
+  // // Function to handle the filtering logic
+  // const handleFilterChange = (e) => {
+
+  //   // Destructure ther target boolean(checked and the target values)
+  //   const { value, checked } = e.target
+
+  //   // Update the filter state with the updated filtered values
+  //   setFilters((prevFilters) => {
+  //     // Update the category filter
+  //     const updatedCategory = checked // If checked is true
+  //       ? [...prevFilters.category, value] // Take the existing list of filters and update with the latest category filter value
+  //       : prevFilters.category.filter(category => category !== value) // If a checkbox has been unchecked, remove the value from the list and update the list
+
+  //     // Update the size filter
+  //     const updatedSize = checked // If checked is true
+  //       ? [...prevFilters.size, value] // Take the existing list of silters and update with the latest value
+  //       : prevFilters.size.filter(size => size !== value) // If a checkbox has been unchecked, remove the value from the list and update the list
+
+  //     // Update the color filter
+  //     const updatedColor = checked // If checked is true
+  //       ? [...prevFilters.color, value] // Take the existing list and update with the talest value
+  //       : prevFilters.color.filter(color => color !== value) // If a chebox is unchecked, remove the value from the list and update he list
+
+  //     // Update the vendor filter
+  //     const updatedVendor = checked
+  //       ? [...prevFilters.vendor, value] // Take the existing vendor list and update with the latest value
+  //       : prevFilters.vendor.filter(vendor => vendor !== value) // If a checkbox is unchecked, remove the value from the list and update the list
+
+  //     return {
+  //       ...prevFilters, //return all the previous filters chosen
+  //       category: updatedCategory,
+  //       size: updatedSize,
+  //       color: updatedColor,
+  //       vendor: updatedVendor
+  //     }
+  //   })
+  // }
+
+  // // States for vendors and colors
+  // const [ colors, setColors ] = useState([])
+  // const [ vendors, setVendor ] = useState([])
+
+
+  // // function to get all unique values from the database
+  // const getAllProductColorsAndVendors = useCallback(async () => {
+  //   // Initialize firestore
+  //   const firestore = getFirestore()
+  //   // Query the product collection from firestore
+  //   let q = query(collection(firestore, "products"))
+  //   // Get al documents from the product collection
+  //   const productSnapShot = await getDocs(q)
+  //   // Map through the product documents if firestore to get the data
+  //   const productsData = productSnapShot.docs.map(doc => doc.data())
+
+  //   // If the length of the category array is greater than 1
+  //   const filteredProducts = filters.category.length > 0
+  //     ? productsData.filter(product => filters.category.includes(product.category)) // Only keep the products matching the checked category
+  //     : productsData
+
+  //   // extract uniqueColors
+  //   const uniqueColors = [ ...new Set(filteredProducts.map(product => product.color))]
+  //   // Extract uniqueVendors
+  //   const uniquevendors = [ ...new Set(filteredProducts.map(product => product.vendors))]
+
+  //   setColors(uniqueColors)
+  //   setVendor(uniquevendors)
+
+  // }, [filters.category]) // Only recreate the component when the category changes
+
+  // // useEffect to check if the function has been created again when the user clicks a new category when the component re-renders
+  // useEffect(() => {
+  //   getAllProductColorsAndVendors()
+  // }, [getAllProductColorsAndVendors])
+
+
+
+
+
+
+
+
+
+
+
+  // Handle the filter Checkboxes
+  const handleFilterChange = (e) => {
+    // Destructure the target values
+    const { value, checked } = e.target
+
+    // Update the filters state with the latest values
+    setFilters((prevFilters) => {
+      // handle the category check
+      const updatedCategory = checked 
+      ? [...prevFilters.category, value] // Take all the previous category filters and update the array with the latest value
+      : prevFilters.category.filter(category => category !== value) // If a checkbox has been unchecked, remove that category from the list and update the list
+
+      // handle the size filter
+      const updatedSize = checked 
+          ? [ ...prevFilters.size, value] // Take all the previous size filters whether checked or unchecked and update the array wih the latest value
+          : prevFilters.size.filter(size => size !== value) // If a checkbox has been unchecked, remove that category from the list and update the list
+
+      // handle the color filter
+      const updatedColor = checked 
+          ? [ ...prevFilters.color, value ]
+          : prevFilters.color.filter(color => color !== value)
+
+      const updatedVendor = checked 
+          ? [ ...prevFilters.vendor, value]
+          : prevFilters.vendor.filter(vendor => vendor !==  value)
+
+      return {
+        ...prevFilters, // Return all filters as they are. Taking account of all filter states
+        category: updatedCategory,
+        size: updatedSize,
+        color: updatedColor,
+        vendor: updatedVendor
+      }
+
+    })
+
+  }
+
+  // state to get all colors
+  const [ colors, setColors ] = useState([]) // Initial state is an empty array of colors
+  // State to get all Vendors
+  const [ vendors, setVendors ] = useState([]) // Initial state is an empty array
+
+  // function to get all unique colors from the database
+  const getAllProductColorsAndVendors = useCallback(async () => {
+
+    // Initialze firestore
+    const firestore = getFirestore()
+
+    // Get all products from firestore
+    let q = query(collection(firestore, 'products'))
+
+    // Get all documents from firestore
+    const snapShot = await getDocs(q)
+    // Map through all details in each doc
+    const products = snapShot.docs.map(doc => doc.data())
+
+    // Only use products matching the selected Categories
+    const filteredProducts = filters.category.length > 0 
+        ? products.filter(product => filters.category.includes(product.category))
+        : products
+
+    
+    //extract unique colors
+    const uniqueColors = [ ...new Set(filteredProducts.map(product => product.color))]
+    // Get A unique array of all vendors
+    const uniqueVendors = [ ...new Set(filteredProducts.map(product => product.vendor))]
+ 
+    setColors(uniqueColors)
+    setVendors(uniqueVendors)
+  }, [filters.category])
+
+  useEffect(() => {
+    getAllProductColorsAndVendors();
+  }, [getAllProductColorsAndVendors]) // Now it's safe to use the memoized function
+
+
+  return (
+    <section className='sidebar'>
+        <div className='category mb-3'>
+          <h4>Filter By Category</h4>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              name='clothes'
+              value='clothes'
+              checked={filters.category.includes('clothes')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='clothes'>Clothes</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              name='shoes'
+              value='shoes'
+              checked={filters.category.includes('shoes')}
+              onChange={handleFilterChange}
+            />
+            <label htnlFor='shoes'>Shoes</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              value='accessories'
+              checked={filters.category.includes('accessories')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='accessories'>Accessories</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              value='bags'
+              checked={filters.category.includes('bags')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='bags'>Bags</label>
+          </div>
+        </div>
+
+        <div className='mb-3'>
+          <h4>Filter By Vendor</h4>
+          {vendors.map((vendor, index) => (
+            <div key={index} className='d-flex gap-2'>
+              <input 
+                type='checkbox'
+                value={vendor}
+                onChange={handleFilterChange}
+                name='vendor'
+              />
+              <label htmlFor='colors'>{vendor}</label>
+            </div>
+          ))}
+        </div>
+
+        <div className='mb-3'>
+          <h4>Filter By Size</h4>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox' 
+              value='XXL'
+              checked={filters.size.includes('XXL')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='XXL'>XXL</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              value='XL'
+              checked={filters.size.includes('XL')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='XL'>XL</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox' 
+              value='L'
+              checked={filters.size.includes('L')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='L'>L</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              value='M'
+              checked={filters.size.includes('M')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='M'>M</label>
+          </div>
+          <div className='d-flex gap-2'>
+            <input 
+              type='checkbox'
+              value='S'
+              checked={filters.size.includes('S')}
+              onChange={handleFilterChange}
+            />
+            <label htmlFor='S'>S</label>
+          </div>
+        </div>
+
+        <div className='mb-3'>
+          <h4>Filter By Color</h4>
+          {colors.map((color, index) => (
+            <div key={index} className='d-flex gap-2'>
+              <input 
+                type='checkbox'
+                value={color}
+                onChange={handleFilterChange}
+                name='color'
+              />
+              <label htmlFor='colors'>{color}</label>
+            </div>
+          ))}
+        </div>
+        
+    </section>
+  )
+}
+

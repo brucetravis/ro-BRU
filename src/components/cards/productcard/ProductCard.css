@@ -1,0 +1,16 @@
+.product-img {
+    background-color: #d3d3d3;
+    width: 200px;
+    height: 230px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img img {
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    object-fit: contain;
+}

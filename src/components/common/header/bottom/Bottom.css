@@ -1,0 +1,247 @@
+.header-two {
+    background-color: orange;
+    padding: 3px;
+    /* text-align: center; */
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    margin-left: 35vw
+}
+
+.header-two .dresses-dropdown {
+    position: relative;
+}
+
+/* .dresses-dropdown .dresses-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 4vh;
+    left: -9vw;
+    text-align: center;
+    /* padding-left: 30vw; */
+    /* padding-top: 3vh; 
+    padding: 3vh 25vw;
+    width: 100vw;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px rgba(0,0,0.2);
+    z-index: 3;
+} */
+
+.dresses-dropdown .dresses-dropdown-content {
+    display: none;
+    position: fixed; /* use fixed instead of absolute for full-screen effect */
+    top: 146px; /* or whatever distance you want from the top */ 
+    left: 0;
+    width: 100vw;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    box-sizing: border-box;
+}
+
+
+.dresses-dropdown:hover .dresses-dropdown-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 30vw;
+    gap: 10vw;
+    text-align: justify;
+}
+
+.dresses-dropdown .dresses-dropdown-content img {
+    height: 250px;
+    width: 250px;
+    object-fit: fit
+}
+
+
+.dresses-dropdown:hover .dresses-dropdown-content a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.dresses-dropdown .dresses-dropdown-content a:hover {
+    color: #8B5E83;
+    cursor: pointer
+}
+
+
+.bags-dropdown {
+    position: relative;
+}
+
+.bags-dropdown-content {
+    display: none;
+    position: fixed;
+    top: 146px;
+    left: 0;
+    width: 100vw;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    box-sizing: border-box;;
+}
+
+.bags-dropdown:hover .bags-dropdown-content {
+    display: flex;
+    gap: 13vw;
+    padding: 2vw 5vw;
+}
+
+.bags-dropdown:hover .bags-dropdown-content a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none
+}
+
+.bags-dropdown .bags-dropdown-content a:hover {
+    color: #8B5E83;
+    cursor: pointer
+}
+
+
+
+.shoes-dropdown {
+    position: relative;
+}
+
+.shoes-dropdown-content {
+    display: none;
+    position: fixed;
+    top: 146px;
+    left: 0;
+    width: 100vw;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    box-sizing: border-box;;
+}
+
+.shoes-dropdown:hover .shoes-dropdown-content {
+    display: flex;
+    gap: 10vw;
+    padding: 2vw 5vw;
+}
+
+.shoes-dropdown:hover .shoes-dropdown-content a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none
+}
+
+.shoes-dropdown:hover .shoes-dropdown-content a:hover {
+    color: #8B5E83;
+    cursor: pointer
+}
+
+
+.accessories-dropdown .accessories-dropdown-content {
+    display: none;
+    position: fixed; /* use fixed instead of absolute for full-screen effect */
+    top: 146px; /* or whatever distance you want from the top */ 
+    left: 0;
+    width: 100vw;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    box-sizing: border-box;
+}
+
+
+.accessories-dropdown:hover .accessories-dropdown-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 30vw;
+    gap: 10vw;
+    text-align: justify;
+}
+
+.accessories-dropdown .accessories-dropdown-content img {
+    height: 250px;
+    width: 250px;
+    object-fit: fit
+}
+
+
+.accessories-dropdown:hover .accessories-dropdown-content a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.accessories-dropdown .accessories-dropdown-content a:hover {
+    color: #8B5E83;
+    cursor: pointer
+}
+
+
+.accessories-dropdown:hover .accessories-dropdown-content img {
+    height: 250px;
+    width: 250px;
+    object-fit: fit
+}
+
+
+@media(max-width: 1280px) {
+    
+    .container {
+        margin-left: 20vw;
+    }
+
+    .dresses-dropdown:hover .dresses-dropdown-content {
+        /* width: 100vw; */
+        top: 138px;
+    }
+
+    .dresses-dropdown .dresses-dropdown-content img {
+        display: none;
+    }
+
+    .bags-dropdown:hover .bags-dropdown-content {
+        top: 138px;
+    }
+
+    .accessories-dropdown:hover .accessories-dropdown-content {
+        /* width: 100vw; */
+        top: 138px;
+    }
+}
+
+@media(max-width: 746px) {
+    .dresses-dropdown:hover .dresses-dropdown-content {
+        /* width: 100vw; */
+        top: 138px;
+    }
+
+    .bags-dropdown:hover .bags-dropdown-content {
+        top: 138px;
+    }
+
+    .shoes-dropdown:hover .shoes-dropdown-content {
+        gap: 5px;
+    }
+
+    .shoes-dropdown:hover .shoes-dropdown-content {
+        top: 138px;
+    }
+
+    .accessories-dropdown .accessories-dropdown-content img {
+        display: none;
+    }
+}
+
+
+
+
+

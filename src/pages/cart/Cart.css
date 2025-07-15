@@ -1,0 +1,23 @@
+.cart-page .button {
+    background-color:rgb(247, 168, 180);
+    color: rgb(141, 128, 128);
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+.cart-page .button:hover {
+    background-color: rgba(230, 143, 156);
+    cursor: pointer;
+}
+
+
+.shopping-cart {
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(209, 204, 204);
+}

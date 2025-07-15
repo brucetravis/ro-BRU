@@ -1,0 +1,7 @@
+1. getters
+2. setters
+3. map
+4. filter
+5. props
+6. id and if else in JavaScript
+7. checked property
